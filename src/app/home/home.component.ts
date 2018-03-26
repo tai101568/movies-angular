@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   _timeout: any;
 
   @HostListener('window:scroll', ['$event']) scrollHandler(event) {
-      const number = window.scrollY;
+      const number = window.pageYOffset || document.documentElement.scrollTop;
       if (number >= 50) {
         $('.back-top').fadeIn();
       } else {
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
       this._timeout && clearTimeout(this._timeout);
       this._timeout = setTimeout(() => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if ((window.innerHeight + number) >= document.body.offsetHeight) {
           this.scrollService.notifyScroll();
         }
       }, 500)
