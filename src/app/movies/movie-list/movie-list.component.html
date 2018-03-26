@@ -9,7 +9,7 @@
             <div class="item-container">
                 <div class="item-info">
                     <div class="item-title" title="{{movie.title}}">{{movie.title}}</div>
-                    <div class="item-genre">&nbsp;<span *ngIf="genres">{{getGenresNameByMovie(movie)}}</span></div>
+                    <div class="item-genre"><span *ngIf="genres">{{getGenresNameByMovie(movie)}}</span>&nbsp;</div>
                 </div>
                 <div class="item-box">
                     {{movie.vote_average}}
