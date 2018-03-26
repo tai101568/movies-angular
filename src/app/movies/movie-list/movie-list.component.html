@@ -1,0 +1,25 @@
+<div class="movies-list">
+    <div class="items" *ngIf="movies">
+        <div class="item" *ngFor="let movie of movies">
+            <a (click)="getGenresNameByMovie(movie)">
+                <img *ngIf="movie.poster_path" width="100%" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" />
+                <img *ngIf="!movie.poster_path" width="100%" src="/assets/images/no_poster_available.jpg" alt="No poster available">
+                <span class="item-date">{{movie.release_date | date: 'yyyy'}}</span>
+            </a>
+            <div class="item-container">
+                <div class="item-info">
+                    <div class="item-title" title="{{movie.title}}">{{movie.title}}</div>
+                    <div *ngIf="genres" class="item-genre">{{getGenresNameByMovie(movie)}}</div>
+                </div>
+                <div class="item-box">
+                    {{movie.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div [hidden]="!isLoadingResults" class="loading-icon">
+        <img src="assets/images/loading-icon.png" />
+        <div>LOADING</div>
+    </div>
+</div>
